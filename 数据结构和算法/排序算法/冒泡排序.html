@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>冒泡排序</title>
+</head>
+<body>
+    <script>
+    /**
+        冒泡排序是依次比较相邻两个值的大小，如果前面的值比后面的小,就讲小的值的排在前面。右边永远是最大的值
+    */
+    var arr = [1,4,6,2,10,9,2];
+    //需要冒泡arr.length次
+    for(var i =0; i < arr.length; i++) {
+        //  每次冒泡都要比较arr.length - i次的大小,因为前面的i个最大值已经被冒泡出来了
+        for(var j = 0; j < arr.length -i; j++) {
+            if( arr[j+1] < arr[j] ) {
+                let item = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = item;
+            }
+        }
+    }
+
+    /**
+        冒泡排序的优化,如果在一次冒泡的过程中,从第n个位置后元素的对比都没有发生交换操作,那可以判断n之后的顺序已经调整,下次冒泡只需要冒泡到n之后,
+        列如[3,5,2,6,7,8,9,10],第一次冒泡需要比较最后一位，以此比较到最后一位,但是记录下此次交换位置的位数是2之后再也没有发生过交换操作,因为
+        5,6,7,8,9,10已经是正序的最大排序集
+    */
+    var arr2 = [6,3,4,7,9,12,2,1];
+    let length = arr2.length;
+    while(length > 0) {
+        let index = 0;
+        for(var j =0; j<length;j++) {
+            if(arr2[j] > arr2[j+1]) {
+                var item = arr2[j];
+                arr2[j] = arr2[j+1];
+                arr2[j+1] = item;
+                index=j+1;
+            }
+        }
+        length=index;
+    }
+
+
+    console.log(arr2)
+    console.log(arr)
+   
+    </script>
+</body>
+</html>

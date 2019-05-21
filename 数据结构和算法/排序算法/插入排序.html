@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>插入排序</title>
+</head>
+<body>
+    <script>
+        /*
+            插入排序就是将未排序的数据,对已排序的数据从后向前扫描,找到对应的位置插入
+            适合小数据排序，大数据排序还是需要快排
+        */
+        var arr = [6,3,4,7,9,12,2,1]
+        function sort(arr) {
+            var length = arr.length;
+            for(var i = 1; i<length;i++) {
+                var temp = arr[i]; //3
+                //默认以排序的元素
+                var j = i -1; 
+                //在以排序好的队列中从后向前扫描
+                while(j>=0 && arr[j] > temp) { 
+                    //以排序的元素大于新元素,将该元素移动到下一个位置
+                    arr[j+1] = arr[j];
+                    j--
+                }
+                arr[j+1] = temp;
+            }
+            return arr
+        }
+        console.log(sort(arr))
+    </script>
+</body>
+</html>

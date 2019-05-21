@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>快速排序</title>
+</head>
+<body>
+    <script>
+        /**
+            原理: 数组中大的放右边,小的放左边, 再将左右分分进行快速排序, 整个过程可采用递归
+        */
+        
+        var arr2 = [10,23,4657,679,34,2,45,7,342,4]
+        function sort1(list) {
+            if(list.length < 2) {
+                return list;
+            } else {
+            //基准值
+            var pivot = list[0];
+            //中间基准值
+            var pivotArr = [];
+            //左边的值
+            var leftArr = [];
+            //右边的值
+            const rightArr = [];
+            list.forEach( current => {
+                
+                if( current === pivot ){
+                    pivotArr.push(current)
+                } else if(  current > pivot) {
+                    rightArr.push(current)
+                } else {
+                    leftArr.push(current)
+                };
+            });
+
+            return sort1(leftArr).concat(pivotArr).concat(sort1(rightArr))
+        }
+    }   
+        console.log(sort1(arr2))
+    </script>
+</body>
+</html>

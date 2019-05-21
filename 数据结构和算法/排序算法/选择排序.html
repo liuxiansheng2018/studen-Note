@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择排序</title>
+</head>
+<body>
+    <script>
+    /*
+        选择排序是一种最直观的排序,在数组中选择最大值放入到新数组中,在原来的数组中的进行删除最大值
+        缺点: 运算慢, 
+    */
+
+    var arr = [6,3,4,7,9,12,2,1];
+    for( var i =0; i<arr.length-1; i++ ) {
+        var minIndex = i;
+        for(var j =i ; j< arr.length;j++) {
+            if(arr[j]<arr[minIndex]) {
+                minIndex = j
+            }
+        }
+        if( minIndex!==i ) {
+            let item=arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = item;
+        }
+    }
+
+    /*
+        方法二：
+    */
+    function sort(list) {
+        var list = [...list] //不对原数组进行操作
+        const newList = [];
+        while(list.length) {
+            let min = Infinity //设置最小值为无穷大
+            let minIndex; //记录最小值的下标
+            list.forEach( (el,index)=> {
+                if(el < min) {
+                    min = el;
+                    minIndex = index;
+                }
+            })
+            newList.push(list[minIndex]);
+            list.splice(minIndex,1)
+        }
+        return newList
+    }
+    console.log(sort(arr))
+    console.log(arr)
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
